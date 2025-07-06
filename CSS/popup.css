@@ -19,10 +19,14 @@
   padding: 20px;
   border-radius: 12px;
   gap: 20px;
-  position: relative;
+  position: fixed;
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 
 .popup-content-div {
