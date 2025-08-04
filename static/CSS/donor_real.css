@@ -313,6 +313,7 @@ main {
   overflow-wrap: break-word;
   box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
   background-image: url('../images/card/card-bg.jpg');
+  margin-top: 1.5rem;
 }
 
 .card h5 {
@@ -367,4 +368,82 @@ main {
   width: 100%;
   max-height: 4rem;
   object-fit: contain;
+}
+
+.amount-section {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.amount-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: transparent;
+  width: 100%;
+  border-radius: 1.25rem;
+  
+}
+
+.amount-card> div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.amount-card-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(to top left, #7c3aed, #ec4899);
+  border-radius: 0.5rem;
+}
+
+.amount-card-logo > div {
+width: 4rem;
+height: 4rem;
+text-align: center;
+background-position: center;
+background-image: linear-gradient(to top left, #6b21a8, #ec4899);
+box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+border-radius: 0.75rem;
+}
+.amount-card-logo i {
+  color: #ffffff;
+  font-size: 2rem;
+  justify-self: center;
+  align-self: center;
+  padding-top: 1rem;
+}
+
+.amount-card-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 50%;
+  padding: 1rem;
+}
+
+.amount-card-info p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
 }
