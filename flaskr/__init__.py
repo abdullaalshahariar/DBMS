@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 
 def create_app(test_config=None):
@@ -31,7 +31,8 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # TURN DEBUGING OFF BEFORE LAUNCING
+    # TURN DEBUGING OFF BEFORE LAUNCING IN PRODUCTION
+    #app.config['DEBUG'] = False
     app.config['DEBUG'] = True
 
     #register the databse connection
@@ -41,9 +42,21 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
 
-    #dummy page saying hello
+    from . import recipient
+    app.register_blueprint(recipient.bp)
+
+    from . import admin
+    app.register_blueprint(admin.bp)
+
+    from .import donor
+    app.register_blueprint(donor.bp)
+
+    
     @app.route('/')
     def index():
-        return 'hello  world!'
+        return render_template('index.html')
     
+    @app.route('/request_donation')
+    def request_donation():
+        return render_template('request_donation.html')
     return app

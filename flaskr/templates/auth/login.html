@@ -1,27 +1,113 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block head %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
-{% endblock %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAPID - Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
 
-{% block header %}
-  <h1>{% block title %}Login{% endblock %}</h1>
-{% endblock %}
+<body><button class = "donate-btn" id="join" type="submit" value="Next">Next</button>
+  <!-- Flash messages -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for message in messages %}
+          <div class="flash-message">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
 
-{% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" 
-           value="{{ request.form.username if request.form.username else '' }}" 
-           required>
-    
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    
-    <input type="submit" value="Sign In">
-  </form>
-  
-  <div class="auth-switch">
-    <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Register here</a></p>
+  <!-- Navigation -->
+  <header>
+    <div class="logo"><span>RAPID</span>
+      <nav class="navlinks">
+        <a href="#">TAB1</a>
+        <a href="#">TAB1</a>
+        <a href="#">TAB1</a>
+        <a href="#">TAB1</a>
+      </nav>
+    </div>
+    <div class="auth-buttons">
+    <a href="{{ url_for('index') }}"><button class="login-btn">Home</button></a>
+      <button class="login-btn">CHECK STATUS</button>
+      <button class="donate-btn" id="requestdonation">REQUEST DONATION</button>
+    </div>
+  </header>
+
+  <div class="login">
+    <img src="{{ url_for('static', filename='images/login_bg.jpg') }}" alt="A welcoming login page background featuring soft blue and white tones. The design includes abstract shapes and gentle gradients, creating a calm and inviting atmosphere for users. The environment is modern and minimalistic, supporting a positive and approachable emotional tone. No visible text is present in the image." />
+
+    <div class="container" id="container">
+      
+      <!-- sign up form -->
+      <div class="form-container sign-up-container">
+        <form action="{{ url_for('auth.register') }}" method="POST">
+          <h1>Create Account</h1>
+          <span>Select your role</span>
+          <select class="role-select" name="role" id="role">
+            <option value="" disabled selected>Select your role</option>
+            <option value="Donor">Donor</option>
+            <option value="Recipient">Recipient</option>
+            <option value="Volunteer">Volunteer</option>
+          </select>
+          <button class = "donate-btn" id="join" type="submit" value="Next">Next</button>
+        </form>
+      </div>
+
+      <!-- Login Form -->
+      <div class="form-container sign-in-container">
+        <form method="post">
+          <h1>Sign in</h1>
+          <input type="text" name="username" id="username" placeholder="Username" 
+                 value="{{ request.form.username if request.form.username else '' }}" required />
+          <input type="password" name="password" id="password" placeholder="Password" required />
+          <select class="role-select" name="role" id="role">
+            <option value="" disabled selected>Select your role</option>
+            <option value="donor">Donor</option>
+            <option value="recipient">Recipient</option>
+            <option value="volunteer">Volunteer</option>
+            <option value="admin">Admin</option>
+          </select>
+          <a href="#">Forgot your password?</a>
+          <button class = "donate-btn" type="submit">Sign In</button>
+        </form>
+      </div>
+
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>To keep connected with us please login with your personal info</p>
+            <button class="super-button" id="signIn">
+              <span>Sign In</span>
+              <svg fill="none" viewBox="0 0 24 24" class="arrow">
+                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" d="M5 12h14M13 6l6 6-6 6"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend!</h1>
+            <p>Enter your personal details and start journey with us</p>
+            <br>
+            <button class="super-button" id="signUp">
+            <span>Get Involved</span>
+              <svg fill="none" viewBox="0 0 24 24" class="arrow">
+                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" d="M5 12h14M13 6l6 6-6 6"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-{% endblock %}
+
+  <script src="{{ url_for('static', filename='script/login.js') }}"></script>
+</body>
+
+</html>

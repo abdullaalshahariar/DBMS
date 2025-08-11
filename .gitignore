@@ -14,3 +14,6 @@ build/
 *.egg-info/
 
 database_info.txt
+
+/templates/
+/static/
